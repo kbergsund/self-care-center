@@ -29,12 +29,15 @@ We were given a design comp that we had to recreate using HTML and CSS. After th
 
 ### Web App Attributes
 1. Standard message generation based on selection & clear button
+
 ![Message Generation   Clear Button](https://user-images.githubusercontent.com/49960644/133011453-e6428c12-9c78-47c7-badc-365be357af56.gif)
 
 2. 'Like' button, Favorites Messages grid display & double click to delete.
+
 ![Favorite Message Button   Grid](https://user-images.githubusercontent.com/49960644/133014143-44abb562-3047-4953-b775-66f2ca70548f.gif)
 
 3. No repeat messages until all of that type have cycled through. Alert message when this has happened. Previously liked messages will remain liked.
+
 ![No Repeats](https://user-images.githubusercontent.com/49960644/133014128-fd4cad85-7ef4-404d-818a-b2f77a6f0c78.gif)
 
 ### Contributors
