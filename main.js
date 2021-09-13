@@ -1,24 +1,29 @@
 // Query Selectors
 var mainPage = document.querySelector('#js-main-page');
 var favMsgPage = document.querySelector('#js-fav-msg');
+
 var affirmationButton = document.querySelector('#affirmation');
 var mantraButton = document.querySelector('#mantra');
 var radioButtons = document.querySelector('form');
 var receiveMessageButton = document.querySelector('#js-receive');
+var clearButton = document.querySelector('#js-clear');
+var showMainButton = document.querySelector('#back-to-main');
+var likeButton = document.querySelector('#js-like');
+
 var messageDisplay = document.querySelector('#msg-and-fav');
 var personImage = document.querySelector('#js-person-img');
 var message = document.querySelector('#js-message');
-var showMainButton = document.querySelector('#back-to-main');
 var favMsgGrid = document.querySelector('#js-fav-msg-grid');
-var viewFavsButton;
-var likeButton;
-var clearButton;
+var viewFavsButton = document.querySelector('#js-fav-button');
 
 // Event Listeners
 affirmationButton.addEventListener('click', enableReceive);
 mantraButton.addEventListener('click', enableReceive);
 showMainButton.addEventListener('click', resetPage);
-favMsgGrid.addEventListener('dblclick', deleteMessage);
+likeButton.addEventListener('click', likeMessage);
+clearButton.addEventListener('click', resetPage);
+viewFavsButton.addEventListener('click', showFavPage);
+favMsgGrid.addEventListener('dblclick', deleteFavMessage);
 
 // Global Variables
 var affirmations = [
@@ -99,6 +104,15 @@ function generateMessage() {
   return currentMessage;
 }
 
+function displayMessage() {
+  changeHidden([personImage], [likeButton, messageDisplay, clearButton, viewFavsButton]);
+  message.innerText = generateMessage();
+  likeButton.classList.remove('pink');
+  if (favoritedMessages.includes(currentMessage)) {
+    likeButton.classList.add('pink');
+  }
+}
+
 function noRepeats(messageType, seenArray) {
   if (seenArray.length !== messageType.length) {
     if (seenArray.includes(currentMessage)) {
@@ -123,40 +137,6 @@ function resetNoRepeats(messageType) {
   return `You have viewed all ${viewedAll}. You will now start seeing repeats.`;
 }
 
-function displayMessage() {
-  enableFavorite();
-  changeHidden([personImage], [likeButton, messageDisplay]);
-  message.innerText = generateMessage();
-  displayClearButton();
-  displayViewFavsButton();
-  likeButton.classList.remove('pink');
-  if (favoritedMessages.includes(currentMessage)) {
-    likeButton.classList.add('pink');
-  }
-}
-
-function displayClearButton() {
-  clearButton = document.querySelector('#js-clear');
-  clearButton.addEventListener('click', resetPage);
-  changeHidden([], [clearButton]);
-}
-
-function displayViewFavsButton() {
-  viewFavsButton = document.querySelector('#js-fav-button');
-  viewFavsButton.addEventListener('click', showFavPage);
-  changeHidden([], [viewFavsButton]);
-}
-
-function showFavPage() {
-  changeHidden([mainPage], [favMsgPage]);
-  makeFavMsgGrid();
-}
-
-function enableFavorite() {
-  likeButton = document.querySelector('#js-like');
-  likeButton.addEventListener('click', favoriteMessage);
-}
-
 function resetPage() {
   receiveMessageButton.removeEventListener('click', displayMessage);
   changeHidden([favMsgPage, messageDisplay, clearButton, viewFavsButton], [mainPage, personImage]);
@@ -165,7 +145,7 @@ function resetPage() {
   }
 }
 
-function favoriteMessage() {
+function likeMessage() {
   if (!likeButton.classList.contains('pink')) {
     likeButton.classList.add('pink');
     if (!favoritedMessages.includes(currentMessage)) {
@@ -181,6 +161,11 @@ function favoriteMessage() {
   }
 }
 
+function showFavPage() {
+  changeHidden([mainPage], [favMsgPage]);
+  makeFavMsgGrid();
+}
+
 function makeFavMsgGrid() {
   favMsgGrid.innerHTML = '';
   for (var i = 0; i < favoritedMessages.length; i++) {
@@ -191,7 +176,7 @@ function makeFavMsgGrid() {
   }
 }
 
-function deleteMessage() {
+function deleteFavMessage() {
   var messageToDelete = event.target.innerText;
   for (var i = 0; i < favoritedMessages.length; i++) {
     if (messageToDelete === favoritedMessages[i]) {

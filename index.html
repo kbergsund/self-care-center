@@ -1,45 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
-    <title>Self-Care Center</title
-  </head>
-  <body>
-    <section class="main-page" id="js-main-page">
-      <h1>✨ Self-Care Center ✨</h1>
-      <h3> Which type of message?</h3>
-      <section class="message-selector-box">
-          <form>
-            <div>
-              <input type="radio" id="affirmation" name="messageType" value="affirmation">
-              <label for="affirmation">affirmation</label>
-            </div>
-            <div>
-              <input type="radio" id="mantra" name="messageType" value="mantra">
-              <label for="affirmation">mantra</label>
-            </div>
-          </form>
-        <button type="button" class="receive-message-button" id="js-receive">Receive Message</button>
-      </section>
-      <section class="message-box" id="js-message-box">
-        <img class="person-img" id="js-person-img" url="./assets/meditate.png" alt="bell person" srcset="./assets/meditate.svg">
-        <div class="hidden" id="msg-and-fav">
-          <p class="message" id="js-message"></p>
-          <i class="material-icons md-36" id="js-like">favorite</i>
+
+<head>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  <title>Self-Care Center</title </head>
+
+<body>
+  <section class="main-page" id="js-main-page">
+    <h1>✨ Self-Care Center ✨</h1>
+    <h3> Which type of message?</h3>
+    <section class="message-selector-box">
+      <form>
+        <div>
+          <input type="radio" id="affirmation" name="messageType" value="affirmation">
+          <label for="affirmation">affirmation</label>
         </div>
-      </section>
-      <button type="button" class="clear-button hidden" id="js-clear">Clear</button>
-      <button type="button" class="view-favorites hidden" id="js-fav-button">View Favorites</button>
+        <div>
+          <input type="radio" id="mantra" name="messageType" value="mantra">
+          <label for="affirmation">mantra</label>
+        </div>
+      </form>
+      <button type="button" class="receive-message-button" id="js-receive">Receive Message</button>
+    </section>
+    <section class="message-box">
+      <img class="person-img" id="js-person-img" url="./assets/meditate.png" alt="bell person" srcset="./assets/meditate.svg">
+      <div class="hidden" id="msg-and-fav">
+        <p id="js-message"></p>
+        <i class="material-icons md-36" id="js-like">favorite</i>
+      </div>
+    </section>
+    <button type="button" class="hidden" id="js-clear">Clear</button>
+    <button type="button" class="hidden" id="js-fav-button">View Favorites</button>
   </section>
-  <section class="fav-messages hidden" id="js-fav-msg">
+  <section class="hidden" id="js-fav-msg">
     <h2>✨ Favorited Messages ✨</h2>
-    <article class="fav-messages-grid" id="js-fav-msg-grid">
-    </article>
+    <article class="fav-messages-grid" id="js-fav-msg-grid"></article>
     <button type="button" id="back-to-main">Back To Main</button>
     <h5>(double click to delete)</h5>
   </section>
-    <script type="text/javascript" src="main.js"></script>
-  </body>
+  <script type="text/javascript" src="main.js"></script>
+</body>
+
 </html>
