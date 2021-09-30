@@ -1,4 +1,5 @@
 # Self-Care Center (Solo Challenge)
+Mod 2108 FEE - Mid-Mod Solo Challenge
 
 A web app that helps to remind users of their inherent value by cycling through a number of affirmations and mantras at the click of a button. User chooses which of the two they want to see. They can 'like' any messages which will add them to a 'favorites messages' grid. 
 
